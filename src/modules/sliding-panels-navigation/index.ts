@@ -103,6 +103,11 @@ export default class MmSlidingPanelsNavigation {
             open.classList.remove(`${prefix}--parent`);
         });
 
+        // custom event for panel open (compatible code with IE)
+        let event = document.createEvent('Event');
+        event.initEvent('mmpanelopen', false, false);
+        panel.dispatchEvent(event);
+
         //  Set the current panel as being opened.
         panel.classList.add(`${prefix}--open`);
         panel.classList.remove(`${prefix}--parent`);
